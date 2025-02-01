@@ -44,7 +44,13 @@ void tryGeneratePost(std::shared_ptr<PostState> state) {
         auto now = std::chrono::system_clock::now();
         std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
         std::tm now_tm;
-        localtime_s(&now_tm, &now_time_t); // Safe on Windows
+
+        // Use platform-specific localtime function
+        #if defined(GEODE_IS_WINDOWS)
+            localtime_s(&now_tm, &now_time_t); // Safe on Windows
+        #elif defined(GEODE_IS_MACOS) || defined(GEODE_IS_ANDROID)
+            localtime_r(&now_time_t, &now_tm);  // Safe on macOS/Android
+        #endif
 
         state->config.day = now_tm.tm_mday;
         state->config.month = now_tm.tm_mon + 1;
