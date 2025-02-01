@@ -1,0 +1,19 @@
+{
+	"geode": "4.2.1",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "omgrod.the_daily_geode",
+	"name": "The Daily Geode",
+	"version": "v1.0.0",
+	"developer": "OmgRod",
+	"description": "Create your own Daily Geodes in Geometry Dash :D",
+	"resources": {
+		"files": [
+			"res/**/*"
+		]
+	}
+}
